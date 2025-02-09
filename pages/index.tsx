@@ -18,7 +18,7 @@ export default function Home() {
             <Link href="/about" className="text-white">About</Link>
           </li>
           <li>
-            <Link href="/contact" className="text-white">Contact</Link>
+            <Link href="/create" className="text-white">Create</Link>
           </li>
         </ul>
       </nav>
