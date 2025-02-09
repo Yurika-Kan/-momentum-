@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model Proposal {
+    id           Int      @id @default(autoincrement())
+    title        String
+    description  String 
+    duration     String
+    createdById  String
+    team         Teammate[]
+    tags         Tag[]
+    requests     Request[]
+    tagged       Tagged[]
+
+}
+
+model Tag {
+    tag String @id
+    tagged Tagged[]
+    proposals Proposal[]
+}
+
+model Tagged {
+    prop_id Int 
+    tag String
+
+    Proposal Proposal @relation(fields: prop_id, references: id)
+    Tag Tag @relation(fields: tag, references: tag)
+
+    @@id([prop_id, tag])
+}
+
+model Request {
+    prop_id Int
+    user_id String
+    
+    Proposal Proposal @relation(fields: prop_id, references: id)
+    User User @relation(fields: user_id, references: username)
+
+    @@id([prop_id, user_id])
+}
+
+model Teammate {
+    prop_id Int
+    user_id String
+    
+    Proposal Proposal @relation(fields: prop_id, references: id)
+    User User @relation(fields: user_id, references: username)
+
+    @@id([prop_id, user_id])
+
+}
+
+model User {
+    username      String    @id @default(cuid())
+    name          String?
+    accounts      Account[]
+    sessions      Session[]
+    teammates     Teammate[]
+    requests      Request[]
+}
+
+// Necessary for Next auth
+model Account {
+    id                       String  @id @default(cuid())
+    userId                   String
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String? // @db.Text
+    access_token             String? // @db.Text
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String? // @db.Text
+    session_state            String?
+    user                     User    @relation(fields: [userId], references: [username], onDelete: Cascade)
+    refresh_token_expires_in Int?
+
+    @@unique([provider, providerAccountId])
+}
+
+model Session {
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [username], onDelete: Cascade)
+}
+
+
+model VerificationToken {
+    identifier String
+    token      String   @unique
+    expires    DateTime
+
+    @@unique([identifier, token])
+}
