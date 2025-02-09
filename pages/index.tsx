@@ -24,7 +24,7 @@ export default function Home() {
         <ul className="flex space-x-8 text-lg font-semibold">
           <li><Link href="/" className="text-white">Home</Link></li>
           <li><Link href="/about" className="text-white">About</Link></li>
-          <li><Link href="/create2" className="text-white">Create</Link></li>
+          <li><Link href="/create" className="text-white">Create</Link></li>
         </ul>
       </nav>
 
