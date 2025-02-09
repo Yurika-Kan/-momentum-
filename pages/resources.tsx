@@ -14,6 +14,8 @@ export default function Resources() {
     { title: "Lopeum", subhead: "Subhead Lospeum 2" },
     { title: "Lopeum", subhead: "Subhead Lospeum 3" },
     { title: "Lopeum", subhead: "Subhead Lospeum 4" },
+    { title: "Lopeum", subhead: "Subhead Lospeum 5" },
+
   ];
 
   // Handle the left arrow click
