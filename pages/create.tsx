@@ -18,6 +18,7 @@ export default function Create() {
   const [submittedProjects, setSubmittedProjects] = useState([]);
   const [id, setId] = useState(0);
   const [showMatchMentorButton, setShowMatchMentorButton] = useState(false); // State to track if the match mentor button should show
+  const [mentorMatch, setMentorMatch] = useState(null); // Store the mentor match result
 
   const handleSubmit = async () => {
     const techStackArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
@@ -67,9 +68,9 @@ export default function Create() {
       }
 
       const match = await res.json();
-      alert(`Best mentor match: ${match.match}`);
+      setMentorMatch(match); // Store the match result in the state
     } catch (error) {
-      console.error(error);
+      setMentorMatch({ error: 'Failed to find mentor match' }); // Handle errors if needed
     }
   };
 
@@ -112,48 +113,58 @@ export default function Create() {
               </div>
               {/* Match Mentor Button next to each project */}
               {showMatchMentorButton && (
-                <button
-                  onClick={handleMentorMatch}
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg"
-                >
-                  Match Mentor
-                </button>
+                <>
+                  <button
+                    onClick={handleMentorMatch}
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg"
+                  >
+                    Match Mentor
+                  </button>
+                  {/* Display the mentor match result */}
+                  {mentorMatch && mentorMatch.error ? (
+                    <p className="text-red-500 mt-2">{mentorMatch.error}</p>
+                  ) : mentorMatch ? (
+                    <p className="text-green-500 mt-2">Best Mentor Match: {mentorMatch.name}</p>
+                  ) : null}
+                </>
               )}
             </div>
           ))}
         </div>
-      </div>
+      </div >
 
       {/* Project Form */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-          <div className="bg-gray-900 p-6 rounded-lg shadow-lg w-96 text-white">
-            <h2 className="text-xl mb-4">New Project</h2>
-            <input
-              type="text"
-              placeholder="Project Name"
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-              className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
-            />
-            <textarea
-              placeholder="Project Description"
-              value={projectDescription}
-              onChange={(e) => setProjectDescription(e.target.value)}
-              className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
-            />
-            <input
-              type="text"
-              placeholder="Tech Stack (use #hashtags)"
-              value={projectTechStack}
-              onChange={(e) => setProjectTechStack(e.target.value)}
-              className="w-full p-2 mb-4 rounded bg-gray-800 text-white"
-            />
-            <button onClick={handleSubmit} className="w-full bg-blue-600 py-2 rounded-lg shadow-lg">Submit</button>
-            <button onClick={() => setShowForm(false)} className="w-full bg-gray-700 mt-2 py-2 rounded-lg shadow-lg">Cancel</button>
+      {
+        showForm && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
+            <div className="bg-gray-900 p-6 rounded-lg shadow-lg w-96 text-white">
+              <h2 className="text-xl mb-4">New Project</h2>
+              <input
+                type="text"
+                placeholder="Project Name"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
+              />
+              <textarea
+                placeholder="Project Description"
+                value={projectDescription}
+                onChange={(e) => setProjectDescription(e.target.value)}
+                className="w-full p-2 mb-2 rounded bg-gray-800 text-white"
+              />
+              <input
+                type="text"
+                placeholder="Tech Stack (use #hashtags)"
+                value={projectTechStack}
+                onChange={(e) => setProjectTechStack(e.target.value)}
+                className="w-full p-2 mb-4 rounded bg-gray-800 text-white"
+              />
+              <button onClick={handleSubmit} className="w-full bg-blue-600 py-2 rounded-lg shadow-lg">Submit</button>
+              <button onClick={() => setShowForm(false)} className="w-full bg-gray-700 mt-2 py-2 rounded-lg shadow-lg">Cancel</button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* Notifications Section */}
       <div className="bg-gray-800 w-1/2 absolute right-8 top-16 rounded-lg p-4 shadow-lg max-h-[500px] overflow-y-auto">

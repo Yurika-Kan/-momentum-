@@ -15,7 +15,7 @@ export async function findMentorMatch(projectId: number): Promise<string> {
 
         // prompt
         const matchPrompt = `
-            Given the project details below, match the best mentor from the list and return in a json format:
+            Given the project details below, match the best mentor from the list and and return only that Mentors name as a string:
             Project: Name: ${project.title}, Tech Stack: ${project.tags.join(', ')}, Duration: ${project.duration}.
             Mentors: ${mentors.map(m => `Name: ${m.username}, Tech Stack: ${m.tags.join(', ')}`).join(', ')}.
             Who is the best mentor for this project?
