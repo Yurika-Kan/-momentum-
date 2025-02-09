@@ -1,5 +1,5 @@
 // pages/signin.tsx
-
+/*
 import React, { useState } from 'react';
 
 const SignIn: React.FC = () => {
@@ -63,3 +63,4 @@ const SignIn: React.FC = () => {
 };
 
 export default SignIn;
+*/
