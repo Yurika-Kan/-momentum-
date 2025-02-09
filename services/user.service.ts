@@ -23,6 +23,11 @@ export const getRequests = async(username: string) => {
     const response = await prisma.proposal.findMany({
         where: {
             createdById: username,
+<<<<<<< Updated upstream
+=======
+        },
+        select: {
+>>>>>>> Stashed changes
             requests: {
                 
             }
