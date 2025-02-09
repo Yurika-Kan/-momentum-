@@ -80,3 +80,37 @@ export const getProject = async(project_id: number) => {
     })
     return response
 }
+
+export const makeRequest = async(project_id: number, user_id: string) => {
+    const response = await prisma.request.create({
+        data: {
+            prop_id: project_id,
+            user_id: user_id
+        }
+    })
+
+    return response
+}
+
+export const getTags = async() => {
+    const response = await prisma.tag.findMany({})
+    return response
+}
+
+export const getProjects = async() => {
+    const response = await prisma.proposal.findMany({})
+    return response
+}
+
+export const addSpecialty = async(tags: string[], user_id: string) => {
+    for (var tag of tags) {
+        await prisma.tagsOnUser.create({
+            data: {
+                Tag: tag,
+                user: user_id
+            }
+        })
+    }
+}
+
+

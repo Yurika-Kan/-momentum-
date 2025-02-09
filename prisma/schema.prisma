@@ -1,98 +1,87 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Proposal {
-    id           Int      @id @default(autoincrement())
-    title        String
-    description  String 
-    duration     String
-    createdById  String
-    user         User     @relation(fields: [createdById], references: [username])
-    team         Teammate[]
-    requests     Request[]
-    tagged       TagsOnPost[]
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  duration    String
+  createdById String
+  user        User         @relation(fields: [createdById], references: [username])
+  requests    Request[]
+  tagged      TagsOnPost[]
+  team        Teammate[]
 }
 
 model Tag {
-    tag String @id
-    tagged TagsOnPost[]
+  tag    String       @id
+  tagged TagsOnPost[]
 }
 
 model TagsOnPost {
-    prop_id Int 
-    tag String
+  prop_id  Int
+  tag      String
+  Proposal Proposal @relation(fields: [prop_id], references: [id])
+  Tag      Tag      @relation(fields: [tag], references: [tag])
 
-    Proposal Proposal @relation(fields: prop_id, references: id)
-    Tag Tag @relation(fields: tag, references: tag)
-
-    @@id([prop_id, tag])
+  @@id([prop_id, tag])
 }
 
 model Request {
-    prop_id Int
-    user_id String
-    
-    Proposal Proposal @relation(fields: prop_id, references: id)
-    User User @relation(fields: user_id, references: username)
+  prop_id  Int
+  user_id  String
+  Proposal Proposal @relation(fields: [prop_id], references: [id])
+  User     User     @relation(fields: [user_id], references: [username])
 
-    @@id([prop_id, user_id])
+  @@id([prop_id, user_id])
 }
 
 model Teammate {
-    prop_id Int
-    user_id String
-    
-    Proposal Proposal @relation(fields: prop_id, references: id)
-    User User @relation(fields: user_id, references: username)
+  prop_id  Int
+  user_id  String
+  Proposal Proposal @relation(fields: [prop_id], references: [id])
+  User     User     @relation(fields: [user_id], references: [username])
 
-    @@id([prop_id, user_id])
-
+  @@id([prop_id, user_id])
 }
 
 model User {
-    username      String    @id @default(cuid())
-    password      String
-    mentor_mode   Boolean
-    contact_info  String
-    link          String 
-    sessions      Session[]
-    teammates     Teammate[]
-    requests      Request[]
-    proposals     Proposal[]
-    TagsOnUser    TagsOnUser[]
+  username     String       @id @default(cuid())
+  password     String
+  contact_info String
+  mentor_mode  Boolean
+  link         String
+  proposals    Proposal[]
+  requests     Request[]
+  sessions     Session[]
+  TagsOnUser   TagsOnUser[]
+  teammates    Teammate[]
 }
 
 model TagsOnUser {
-  Tag String @id
+  Tag  String @id
   user String
-  
-  User User @relation(fields: [user], references: [username])
-
+  User User   @relation(fields: [user], references: [username])
 }
-
 
 model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [username], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [username], onDelete: Cascade)
 }
 
-
 model VerificationToken {
-    identifier String
-    token      String   @unique
-    expires    DateTime
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
-    @@unique([identifier, token])
+  @@unique([identifier, token])
 }
