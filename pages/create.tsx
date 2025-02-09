@@ -29,6 +29,7 @@ export default function Create() {
     setId(getRandomInt(10000000));
 
     try {
+      setShowMatchMentorButton(true);
       const res = await fetch('/api/projects/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,7 +49,6 @@ export default function Create() {
       const project = await res.json();
       console.log('Project created:', project);
       // Show the match mentor button after the project is created
-      setShowMatchMentorButton(true);
     } catch (error) {
       console.error(error);
     }
@@ -102,12 +102,23 @@ export default function Create() {
           <Plus className="text-white w-[100px] h-[100px]" />
         </div>
 
-        {/* Submitted Projects - Now directly below the create button */}
+        {/* Submitted Projects Section */}
         <div className="w-full space-y-4">
           {submittedProjects.map((project, index) => (
-            <div key={index} className="bg-gray-700 p-4 rounded-lg shadow-lg w-[200px]">
-              <h3 className="text-lg text-white font-semibold">{project.name}</h3>
-              <p className="text-white text-sm">{project.description}</p>
+            <div key={index} className="flex items-center justify-between bg-gray-700 p-4 rounded-lg shadow-lg w-[200px]">
+              <div>
+                <h3 className="text-lg text-white font-semibold">{project.name}</h3>
+                <p className="text-white text-sm">{project.description}</p>
+              </div>
+              {/* Match Mentor Button next to each project */}
+              {showMatchMentorButton && (
+                <button
+                  onClick={handleMentorMatch}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg"
+                >
+                  Match Mentor
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -180,13 +191,6 @@ export default function Create() {
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">Get Mentor</button>
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">View Contact</button>
         </div>
-
-        {/* Match Mentor Button */}
-        {showMatchMentorButton && (
-          <div className="mt-8">
-            <button onClick={handleMentorMatch} className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg">Match Mentor</button>
-          </div>
-        )}
       </div>
 
       {/* Background and Waves */}
