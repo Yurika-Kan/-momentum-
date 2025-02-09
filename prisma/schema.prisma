@@ -18,19 +18,16 @@ model Proposal {
     createdById  String
     user         User     @relation(fields: [createdById], references: [username])
     team         Teammate[]
-    tags         Tag[]
     requests     Request[]
-    tagged       Tagged[]
-
+    tagged       TagsOnPost[]
 }
 
 model Tag {
     tag String @id
-    tagged Tagged[]
-    proposals Proposal[]
+    tagged TagsOnPost[]
 }
 
-model Tagged {
+model TagsOnPost {
     prop_id Int 
     tag String
 
@@ -64,28 +61,24 @@ model Teammate {
 model User {
     username      String    @id @default(cuid())
     password      String
-    mentor        Boolean
+    mentor_mode   Boolean
+    contact_info  String
+    link          String 
     sessions      Session[]
     teammates     Teammate[]
     requests      Request[]
-    tech_stack    TechStack[]
-    Proposal      Proposal[]
+    proposals     Proposal[]
+    TagsOnUser    TagsOnUser[]
 }
 
-model Specialty {
-  specialty String @id
-  TechStack TechStack[] @relation("tech_tag")
+model TagsOnUser {
+  Tag String @id
+  user String
+  
+  User User @relation(fields: [user], references: [username])
+
 }
 
-model TechStack {
-  special_tag String
-  user_id String
-
-  spec Specialty @relation("tech_tag", fields: [special_tag], references: [specialty])
-  User User @relation(fields: [user_id], references: [username])
-
-  @@id([special_tag, user_id])
-}
 
 model Session {
     id           String   @id @default(cuid())
