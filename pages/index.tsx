@@ -37,16 +37,7 @@ export default function Home() {
           <p className="text-lg text-gray-300 mt-2">Build teams, get mentorship, and keep moving.</p>
         </div>
 
-        {/* Right Side - Image */}
-        <div className="w-1/2 flex justify-end">
-          <Image
-            src="/iwantmymom.png"
-            alt="Momentum Image"
-            width={500}
-            height={500}
-            className="rounded-xl shadow-lg"
-          />
-        </div>
+      
 
         {/* Down Arrow Button - Positioned Above the Wave */}
         <button
