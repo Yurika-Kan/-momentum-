@@ -41,7 +41,7 @@ export const getRequests = async(username: string) => {
     return response
 }
 
-export const createProject = async(title: string, description: string, duration: string, user: string, 
+export const createProject = async(id: number, title: string, description: string, duration: string, user: string, 
     tags: string[]) => {
     const response = await prisma.proposal.create({
         data: {

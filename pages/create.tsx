@@ -3,6 +3,9 @@ import Image from "next/image";
 import Wave from 'react-wavify';
 import Link from 'next/link';
 import { Bell, Plus } from 'lucide-react'; // Import Plus from Lucide
+import { get } from 'http';
+import { createProject } from '@/services/user.service';
+import { findMentorMatch } from '@/services/groq';
 
 export default function Create() {
   const [accepted, setAccepted] = useState(false);
@@ -13,6 +16,7 @@ export default function Create() {
   const [projectDescription, setProjectDescription] = useState('');
   const [projectTechStack, setProjectTechStack] = useState('');
   const [submittedProjects, setSubmittedProjects] = useState([]);
+  const [id, setId] = useState(0);
 
   const handleSubmit = () => {
     const techStackArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
@@ -21,7 +25,15 @@ export default function Create() {
     setProjectName('');
     setProjectDescription('');
     setProjectTechStack('');
+    setId(getRandomInt(10000000));
+    createProject(id, projectName, projectDescription, '1', '1', techStackArray);
   };
+
+  const handleMentorMatch = () => {
+    findMentorMatch(id);
+  }
+
+  const getRandomInt = (max: number) => {return Math.floor(Math.random() * max)};
 
   return (
     <>
@@ -91,6 +103,7 @@ export default function Create() {
           </div>
         </div>
       )}
+      
   {/* Notifications Section */}
   <div className="bg-gray-800 w-1/2 absolute right-8 top-16 rounded-lg p-4 shadow-lg max-h-[500px] overflow-y-auto">
     <div className="flex items-center gap-2 text-white mb-4">
