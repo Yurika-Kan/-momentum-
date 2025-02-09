@@ -10,12 +10,10 @@ export default function Resources() {
 
   // Array of boxes content
   const boxes = [
-    { title: "Lopeum", subhead: "Subhead Lospeum 1" },
-    { title: "Lopeum", subhead: "Subhead Lospeum 2" },
-    { title: "Lopeum", subhead: "Subhead Lospeum 3" },
-    { title: "Lopeum", subhead: "Subhead Lospeum 4" },
-    { title: "Lopeum", subhead: "Subhead Lospeum 5" },
-
+    { title: "Sprint #0: onbaording", subhead: "• Set up communication channel between teammates and mentor (messages, Discord, etc) • Determine project scope: Define objectives, constraints, features, and functions of the application\n  • Create tickets (tasks) for everyone to do \n • Determine what the MVP (Minimum Viable Product) would look like \n • Binary starts with zero, so we do for some reason`" },
+    { title: "Sprint #1: begin", subhead: "Start working on tasks that were assigned. Have a weekly check-in with your mentor . Have daily standups with team mates. This is where you communicate what your working on with your team/ how it is going Remember you can always lean on your members and your mentor" },
+    { title: "Sprint #2: midpoint check-in", subhead: "Have a midpoint meeting as a group with your mentor to see how things are going Pair program with team members to check work!You can revise goals in this stage" },
+    { title: "Sprint #3: ", subhead: "Yay! Your project is finished. Pat yourself on the back"},
   ];
 
   // Handle the left arrow click
@@ -52,74 +50,86 @@ export default function Resources() {
     </h1>
     <p className="text-xl mt-2 text-gray-700">
       What is scrum? 
-      It is an industry standard framework that helps
+      It is an industry standard framework that helps <br />
       software teams structure and manage their work!
     </p>
   </div>
 
   {/* Section below "Sail to Scrum" */}
-  <div className="mt-24 px-8 flex justify-between mx-auto">
-    <div className="text-center w-1/2">
-      <p className="text-3xl font-extrabold text-gray-900">Let's define sprint</p>
-      <p className="text-lg mt-2 text-gray-700">left blah</p>
-    </div>
-    <div className="text-center w-1/2">
-      <p className="text-3xl font-extrabold text-gray-900">Why Scrum?</p>
-      <p className="text-lg mt-2 text-gray-700">right black</p>
-    </div>
+<div className="mt-24 px-8 flex justify-between mx-auto">
+  <div className="text-center w-1/2">
+    <p className="text-3xl font-extrabold text-gray-900">Let's define sprint</p>
+    <p className="text-lg mt-2 text-gray-700">
+      Sprints are short planned periods where a <br />
+      team works to complete a set amount of work!
+    </p>
   </div>
+  <div className="text-center w-1/2">
+    <p className="text-3xl font-extrabold text-gray-900">Why Scrum?</p>
+    <p className="text-lg mt-2 text-gray-700">
+      Most tech companies use scrum. <br />
+      Knowing scrum can help you stand out professionally!
+    </p>
+  </div>
+</div>
 
 
         {/* Space Below Lospeum */}
         <div className="mt-12"></div>
 
-        {/* Boxes with Dynamic Display */}
-        <div className="relative w-full h-[300px] flex justify-center items-center">
-          <div className="absolute flex justify-center items-center w-full h-full">
-            {boxes.map((box, index) => (
-              <div
-                key={index}
-                className={`absolute text-center p-4 bg-blue-600 text-white font-bold transition-opacity duration-500 ${
-                  currentIndex === index ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ transition: "opacity 0.5s ease" }}
-              >
-                {box.title}
-                <p className="mt-2 text-sm">{box.subhead}</p>
-              </div>
-            ))}
-          </div>
+       {/* Boxes with Dynamic Display */}
+<div className="relative w-full h-[300px] flex justify-center items-center">
+  <div className="absolute flex justify-center items-center w-full h-full">
+    {boxes.map((box, index) => (
+      <div
+        key={index}
+        className={`absolute inset-x-0 mx-auto text-center p-4 bg-blue-600 text-white font-bold transition-opacity duration-500 w-full max-w-[33.33%] ${
+          currentIndex === index ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ transition: "opacity 0.5s ease" }}
+      >
+        {box.title}
+        <p className="mt-2 text-sm">{box.subhead}</p>
+      </div>
+    ))}
+  </div>
 
-          {/* Arrow Clickers */}
-          <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-15">
-            <FaChevronLeft
-              className="text-white text-4xl cursor-pointer"
-              onClick={handlePrev}
-            />
-          </div>
-          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-15">
-            <FaChevronRight
-              className="text-white text-4xl cursor-pointer"
-              onClick={handleNext}
-            />
-          </div>
+
+  <div
+  className="absolute top-1/2 transform -translate-y-1/2 z-15"
+  style={{ left: "25%" }}
+>
+  <FaChevronLeft
+    className="text-white text-4xl cursor-pointer"
+    onClick={handlePrev}
+  />
+</div>
+
+<div
+  className="absolute top-1/2 transform -translate-y-1/2 z-15"
+  style={{ right: "25%" }}
+>
+  <FaChevronRight
+    className="text-white text-4xl cursor-pointer"
+    onClick={handleNext}
+  />
+</div>
+</div>
+</div>
+     
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-6 px-8 w-full">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm">© 2025 Momentum. By Anjola Babalola, London Jones, Yurika Kan, Jen Cui.</p>
+          <ul className="flex space-x-6 mt-4 md:mt-0">
+            <li><Link href="/privacy" className="hover:text-blue-500">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-blue-500">Terms of Service</Link></li>
+            <li><Link href="/contact" className="hover:text-blue-500">Contact Us</Link></li>
+          </ul>
         </div>
-      </div>
-
-      {/* Bottom Wave Effect */}
-      <div className="absolute bottom-0 left-0 w-full z-10">
-        <Wave
-          fill="rgba(0, 13, 255, 0.8)"
-          paused={false}
-          style={{ display: "flex" }}
-          options={{
-            height: 0.01,
-            amplitude: 50,
-            speed: 0.15,
-            points: 3
-          }}
-        />
-      </div>
+      </footer>
     </>
-  );
+  );    
+  
 }
