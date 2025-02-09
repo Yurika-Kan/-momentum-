@@ -52,6 +52,7 @@ export default function Create() {
         </ul>
       </nav>
 
+<<<<<<< Updated upstream
       <div className="absolute inset-0 bg-black flex flex-col items-start p-8">
         {/* Create Project Button */}
         <div 
@@ -61,6 +62,18 @@ export default function Create() {
           <div className="absolute top-4 text-lg text-white font-semibold">Create Project</div>
           <Plus className="text-white w-[100px] h-[100px]" />
         </div>
+=======
+      {/* Black background wrapper */}
+      <div className="bg-black min-h-screen w-full flex flex-col items-center pt-16">
+
+        {/* Grey flex box for notifications */}
+        <div className="bg-gray-800 w-3/4 rounded-lg p-4 shadow-lg">
+          {/* Notifications header */}
+          <div className="flex items-center gap-2 text-white mb-4">
+            <Bell className="w-5 h-5" />
+            <span className="text-lg font-semibold">Notifications</span>
+          </div>
+>>>>>>> Stashed changes
 
         {/* Submitted Projects - Now directly below the create button */}
         <div className="w-full space-y-4">
@@ -69,7 +82,16 @@ export default function Create() {
               <h3 className="text-lg text-white font-semibold">{project.name}</h3>
               <p className="text-white text-sm">{project.description}</p>
             </div>
+<<<<<<< Updated upstream
           ))}
+=======
+          ) : (
+            <p className="text-white text-center">No notifications</p>
+          )}
+
+          {/* Mentor notifaction not hard code*/}
+          {/* this will only appear when a future button called get mentor is pressed, but it will basically get feilds Mentor name, mentor github, mentor contact. Similar to Rachel notiaction hard code format*/}
+>>>>>>> Stashed changes
         </div>
       </div>
 
@@ -143,7 +165,11 @@ export default function Create() {
       </div>
 
       {/* Background and Waves */}
+<<<<<<< Updated upstream
       <div className="bg-black w-screen h-screen text-black"></div>
+=======
+      <div className="bg-black w-screen h-screen text-black absolute inset-0"></div>
+>>>>>>> Stashed changes
       <div className="fixed bottom-0 left-0 w-full">
         <Wave
           fill="rgba(0, 13, 255, 0.8)"
