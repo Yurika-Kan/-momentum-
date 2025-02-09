@@ -19,7 +19,6 @@ export default function Create() {
   const [id, setId] = useState(0);
   const [showMatchMentorButton, setShowMatchMentorButton] = useState(false); // State to track if the match mentor button should show
 
-
   const handleSubmit = async () => {
     const techStackArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
     setSubmittedProjects([...submittedProjects, { name: projectName, description: projectDescription }]);
@@ -29,16 +28,50 @@ export default function Create() {
     setProjectTechStack('');
     setId(getRandomInt(10000000));
 
-    await createProject(id, projectName, projectDescription, '1', 'John Doe', techStackArray);
+    try {
+      const res = await fetch('/api/projects/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          title: projectName,
+          description: projectDescription,
+          duration: '2',
+          user: 'Yurika Kan' // Replace with actual user info
+        }),
+      });
 
-    // Show the match mentor button after the project is created
-    setShowMatchMentorButton(true);
+      if (!res.ok) {
+        throw new Error('Failed to create project');
+      }
+
+      const project = await res.json();
+      console.log('Project created:', project);
+      // Show the match mentor button after the project is created
+      setShowMatchMentorButton(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleMentorMatch = async () => {
-    await findMentorMatch(id);// Assuming this function makes the API call and returns results
-    alert('finding you the best mentor match!');
-  }
+    try {
+      const res = await fetch('/api/mentors/match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ projectId: id }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to find mentor match');
+      }
+
+      const match = await res.json();
+      alert(`Best mentor match: ${match.match}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getRandomInt = (max: number) => { return Math.floor(Math.random() * max) };
 
