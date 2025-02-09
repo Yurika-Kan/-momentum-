@@ -1,11 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { findMentorMatch } from "@/services/groq";
+import { Router } from "lucide-react";
 
 /**
  * API route handler for processing chat requests.
  * @param {NextApiRequest} req - Incoming HTTP request.
  * @param {NextApiResponse} res - Outgoing HTTP response.
  */
+
+//Router.route.get{https://localhost/findmentor, handler(req , res)}
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Only process POST requests
     if (req.method === 'POST') {
