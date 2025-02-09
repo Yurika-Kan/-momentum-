@@ -16,6 +16,7 @@ model Proposal {
     description  String 
     duration     String
     createdById  String
+    user         User     @relation(fields: [createdById], references: [username])
     team         Teammate[]
     tags         Tag[]
     requests     Request[]
@@ -62,31 +63,28 @@ model Teammate {
 
 model User {
     username      String    @id @default(cuid())
-    name          String?
-    accounts      Account[]
+    password      String
+    mentor        Boolean
     sessions      Session[]
     teammates     Teammate[]
     requests      Request[]
+    tech_stack    TechStack[]
+    Proposal      Proposal[]
 }
 
-// Necessary for Next auth
-model Account {
-    id                       String  @id @default(cuid())
-    userId                   String
-    type                     String
-    provider                 String
-    providerAccountId        String
-    refresh_token            String? // @db.Text
-    access_token             String? // @db.Text
-    expires_at               Int?
-    token_type               String?
-    scope                    String?
-    id_token                 String? // @db.Text
-    session_state            String?
-    user                     User    @relation(fields: [userId], references: [username], onDelete: Cascade)
-    refresh_token_expires_in Int?
+model Specialty {
+  specialty String @id
+  TechStack TechStack[] @relation("tech_tag")
+}
 
-    @@unique([provider, providerAccountId])
+model TechStack {
+  special_tag String
+  user_id String
+
+  spec Specialty @relation("tech_tag", fields: [special_tag], references: [specialty])
+  User User @relation(fields: [user_id], references: [username])
+
+  @@id([special_tag, user_id])
 }
 
 model Session {
