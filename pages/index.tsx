@@ -21,7 +21,7 @@ export default function Home() {
     <>
       {/* Navigation Bar */}
       <nav className="bg-gradient-to-r from-blue-800 to-blue-600 p-6 h-20 fixed top-0 w-full z-40">
-        <ul className="flex space-x-8 text-2xl font-semibold">
+        <ul className="flex space-x-8 text-lg font-semibold">
           <li><Link href="/" className="text-white">Home</Link></li>
           <li><Link href="/about" className="text-white">About</Link></li>
           <li><Link href="/create" className="text-white">Create</Link></li>
@@ -31,7 +31,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative w-screen h-screen flex flex-col items-center justify-center text-center text-black bg-black overflow-hidden">
         <h1 className="text-8xl font-extrabold text-blue-500">Momentum</h1>
-        <p className="text-2xl text-gray-300 mt-4 max-w-2xl">Build teams, get mentorship, and keep moving.</p>
+        <p className="text-2xl font-bold text-gray-300 mt-4 max-w-2xl">Build teams, get mentorship, and keep moving.</p>
 
         {/* Down Arrow Button */}
         <button
@@ -53,8 +53,7 @@ export default function Home() {
       </div>
 
       {/* Next Section */}
-      
-      <div id="next-section" className="h-screen bg-gradient-to-r from-black to-blue-600 flex flex-col items-center justify-center pt-24">
+      <div id="next-section" className="h-screen bg-gradient-to-r from-black to-blue-800 flex flex-col items-center justify-center pt-24">
       <h1 className="text-6xl font-extrabold text-white">Projects</h1>
         <HoverCards
           items={[
