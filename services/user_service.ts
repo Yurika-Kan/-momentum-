@@ -98,7 +98,7 @@ export const getTags = async() => {
 }
 
 export const getProjects = async() => {
-    const response = await prisma.proposal.findMany()
+    const response = await prisma.proposal.findMany({})
     return response
 }
 

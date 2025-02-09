@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Image from "next/image";
 import Wave from 'react-wavify';
 import Link from 'next/link';
-import { Bell, Plus } from 'lucide-react'; // Import Plus from Lucide
-import { getProject } from '@/services/user.service';
+import { Bell } from 'lucide-react'; // Using Lucide for the notification icon
 
 export default function Create() {
   // State to manage the notification's accepted, denied, and show contact info
@@ -129,12 +128,4 @@ export default function Create() {
       </div>
     </>
   );
-}
-
-async function displayProject() {
-  const response = getProjects()
-  
-  for (var data of response) {
-
-  }
 }
