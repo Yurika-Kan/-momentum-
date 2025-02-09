@@ -23,8 +23,8 @@ export default function Home() {
       <nav className="bg-gradient-to-r from-blue-800 to-blue-600 p-6 h-20 fixed top-0 w-full z-40">
         <ul className="flex space-x-8 text-lg font-semibold">
           <li><Link href="/" className="text-white">Home</Link></li>
-          <li><Link href="/about" className="text-white">About</Link></li>
-          <li><Link href="/create" className="text-white">Create</Link></li>
+          <li><Link href="/create" className="text-white">MyHub</Link></li>
+          <li><Link href="/resources" className="text-white">Resources</Link></li>
         </ul>
       </nav>
 

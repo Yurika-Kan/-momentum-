@@ -81,21 +81,15 @@ export default function Create() {
   return (
     <>
       {/* Navigation Bar */}
-      <nav className="bg-gradient-to-r from-blue-500 to-black p-4 fixed top-0 w-full z-10 flex justify-between items-center">
-        <ul className="flex space-x-8">
-          <li>
-            <Link href="/create" className="text-white">Create</Link>
-          </li>
-          <li>
-            <Link href="/about" className="text-white">About</Link>
-          </li>
-          <li>
-            <Link href="/" className="text-white">Home</Link>
-          </li>
+      <nav className="bg-gradient-to-r from-blue-500 to-blue-900 p-6 h-20 fixed top-0 w-full z-40">
+        <ul className="flex space-x-8 text-lg font-semibold">
+          <li><Link href="/" className="text-white">Home</Link></li>
+          <li><Link href="/create" className="text-white">MyHub</Link></li>
+          <li><Link href="/resources" className="text-white">Resources</Link></li>
         </ul>
       </nav>
 
-      <div className="absolute inset-0 bg-black flex flex-col items-start p-8">
+      <div className="absolute inset-0 bg-black flex flex-col items-start p-8 mt-20">
         {/* Create Project Button */}
         <div
           className="bg-gray-700 w-[200px] h-[200px] flex items-center justify-center rounded-lg cursor-pointer shadow-lg mb-4"
@@ -110,7 +104,7 @@ export default function Create() {
           {submittedProjects.map((project, index) => (
             <div key={index} className="flex items-center justify-between bg-gray-700 p-4 rounded-lg shadow-lg w-[200px]">
               <div>
-                <h3 className="text-lg text-white font-semibold">{project.name}</h3>
+                <h3 className="text-lg text-white font-semibold">{project.name + ' '}</h3>
                 <p className="text-white text-sm">{project.description}</p>
               </div>
               {/* Match Mentor Button next to each project */}
@@ -166,7 +160,7 @@ export default function Create() {
       }
 
       {/* Notifications Section */}
-      <div className="bg-gray-800 w-1/2 absolute right-8 top-16 rounded-lg p-4 shadow-lg max-h-[500px] overflow-y-auto">
+      <div className="bg-gray-800 w-1/2 absolute mt-5 right-8 top-16 rounded-lg p-4 shadow-lg max-h-[500px] overflow-y-auto">
         <div className="flex items-center gap-2 text-white mb-4">
           <Bell className="w-5 h-5" />
           <span className="text-lg font-semibold">Notifications</span>
@@ -195,9 +189,9 @@ export default function Create() {
       </div>
 
       {/* Buttons Section */}
-      <div className="bg-black w-screen min-h-screen text-white flex flex-col items-center">
-        <div className="mt-8 flex flex-wrap justify-center space-x-4">
-          <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">Resources</button>
+      <div className="bg-black w-screen min-h-screen text-white mt-150 flex flex-col items-center">
+        <div className="mt-8 flex flex-wrap justify-center space-x-4 mt-50">
+          <button className="bg-blue-900 text-white mt-100 px-6 py-2 rounded-lg shadow-lg">Resources</button>
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">Get Mentor</button>
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">View Contact</button>
         </div>
