@@ -19,7 +19,7 @@ export async function findMentorMatch(projectId: number): Promise<string> {
             Given the project details below, match the best or closest mentor from the list and and return only that Mentors name as a string ALWAYS as just a name string:
             Project: Name: ${project.title}, Tech Stack: ${getTagsOfPost(projectId)}.
             Mentors: ${mentors.map(m => `Name: ${m.username}, Tech Stack: ${getTagsOfUser(m.username)}`).join(', ')}.
-            Who is the best mentor for this project?
+            Who is the best mentor for this project? After returning a mentor, remove them from consideration from the future. 
         `;
 
         // req to groq api

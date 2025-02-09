@@ -118,12 +118,12 @@ export default function Create() {
                 <>
                   <button
                     onClick={handleMentorMatch}
-                    className="bg-blue-600 text-white  margin-1 px-3 py-2 rounded-lg shadow-lg"
+                    className="bg-blue-600 text-white text-xs p-1 px-2 py-1 rounded-lg shadow-lg"
                   > Match Mentor
                   </button>
                   {/* Display the mentor match result */}
                   {mentorMatch ? (
-                    <p className="text-green-500 mt-2">Best Mentor Match: {mentorMatch}</p>
+                    <p className="text-blue-200 text-xs mt-1 p-1">Best Mentor Match: {mentorMatch}</p>
                   ) : null}
                 </>
               )}
