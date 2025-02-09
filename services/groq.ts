@@ -6,7 +6,11 @@ export async function findMentorMatch(projectId: number): Promise<string> {
     try {
         // call service folder --> prisma - find project details
         //const project = await placeholder.findProject(projectId);
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
         // const mentors = await prisma.mentor.findMany()
 
         // prompt
