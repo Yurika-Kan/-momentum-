@@ -1,30 +1,50 @@
-import Image from "next/image";
-import Wave from 'react-wavify';
-import Link from 'next/link';
-import { FaChevronDown } from "react-icons/fa"; // Import an arrow icon
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image"; // Import Image
+import { FaChevronDown } from "react-icons/fa"; 
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import Wave from "react-wavify";  
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export default function Home() {
   const scrollToNextSection = () => {
-    document.getElementById("next-section").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("next-section")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
-      {/* Momentum Title */}
-      <div className="absolute left-10 top-1/2 transform -translate-y-1/2 z-20">
-        <h1 className="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-blue-500">
-          Momentum
-        </h1>
-        <p>
-        Build teams, get mentorship, and keep moving.
-        </p>
+      {/* Hero Section */}
+      <div className="absolute top-1/2 transform -translate-y-1/2 z-20 flex items-center w-full px-10">
+        {/* Left Side - Title & Text */}
+        <div className="w-1/2">
+          <h1 className="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-blue-500">
+            Momentum
+          </h1>
+          <p className="text-white">Build teams, get mentorship, and keep moving.</p>
+        </div>
+
+        {/* Right Side - Image */}
+        <div className="w-1/2 flex justify-end">
+          <Image
+            src="/iwantmymom.png"
+            alt="Momentum Image"
+            width={500}
+            height={500}
+            className="rounded-xl shadow-lg"
+          />
+        </div>
       </div>
 
       {/* Background */}
       <div className="bg-black w-screen h-screen text-black relative">
-        {/* Down Arrow Button - Increased z-index */}
-        <button 
-          onClick={scrollToNextSection} 
+        {/* Down Arrow Button */}
+        <button
+          onClick={scrollToNextSection}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-3xl animate-bounce z-50"
         >
           <FaChevronDown />
@@ -36,7 +56,7 @@ export default function Home() {
         <ul className="flex space-x-8">
           <li><Link href="/" className="text-white">Home</Link></li>
           <li><Link href="/about" className="text-white">About</Link></li>
-          <li><Link href="/contact" className="text-white">Contact</Link></li>
+          <li><Link href="/create" className="text-white">Create</Link></li>
         </ul>
       </nav>
 
@@ -53,11 +73,6 @@ export default function Home() {
             points: 3
           }}
         />
-      </div>
-
-      {/* Next Section */}
-      <div id="next-section" className="h-screen bg-gray-100 flex items-center justify-center">
-        <h2 className="text-3xl font-bold text-gray-800">Next Section</h2>
       </div>
     </>
   );
