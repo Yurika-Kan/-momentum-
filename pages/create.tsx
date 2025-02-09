@@ -18,10 +18,10 @@ export default function Create() {
   const [submittedProjects, setSubmittedProjects] = useState([]);
   const [id, setId] = useState(0);
   const [showMatchMentorButton, setShowMatchMentorButton] = useState(false); // State to track if the match mentor button should show
-  const [mentorMatch, setMentorMatch] = useState(null); // Store the mentor match result
+  const [mentorMatch, setMentorMatch] = useState(''); // Store the mentor match result
 
   const handleSubmit = async () => {
-    const techStackArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
+    const techStacksArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
     setSubmittedProjects([...submittedProjects, { name: projectName, description: projectDescription }]);
     setShowForm(false);
     setProjectName('');
@@ -35,11 +35,12 @@ export default function Create() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          id,
+          id: id,
           title: projectName,
           description: projectDescription,
           duration: '2',
-          user: 'Yurika Kan' // Replace with actual user info
+          user: 'Yurika Kan', // Replace with actual user info
+          techStackArray: techStacksArray
         }),
       });
 
@@ -68,9 +69,10 @@ export default function Create() {
       }
 
       const match = await res.json();
-      setMentorMatch(match); // Store the match result in the state
+      setMentorMatch(match.match); // Store the match result in the state 
+      console.log('Mentor match:', match);
     } catch (error) {
-      setMentorMatch({ error: 'Failed to find mentor match' }); // Handle errors if needed
+      setMentorMatch("error"); // Handle errors if needed
     }
   };
 
@@ -116,15 +118,12 @@ export default function Create() {
                 <>
                   <button
                     onClick={handleMentorMatch}
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg"
-                  >
-                    Match Mentor
+                    className="bg-blue-600 text-white  margin-1 px-3 py-2 rounded-lg shadow-lg"
+                  > Match Mentor
                   </button>
                   {/* Display the mentor match result */}
-                  {mentorMatch && mentorMatch.error ? (
-                    <p className="text-red-500 mt-2">{mentorMatch.error}</p>
-                  ) : mentorMatch ? (
-                    <p className="text-green-500 mt-2">Best Mentor Match: {mentorMatch.name}</p>
+                  {mentorMatch ? (
+                    <p className="text-green-500 mt-2">Best Mentor Match: {mentorMatch}</p>
                   ) : null}
                 </>
               )}

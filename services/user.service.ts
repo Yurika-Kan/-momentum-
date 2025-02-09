@@ -45,6 +45,7 @@ export const createProject = async(id: number, title: string, description: strin
     tags: string[]) => {
     const response = await prisma.proposal.create({
         data: {
+            id: id,
             title: title,
             description: description,
             duration: duration,
@@ -81,3 +82,23 @@ export const getProject = async(project_id: number) => {
     })
     return response
 }
+
+export const getTagsOfUser = async(username: string) => {
+    const response = await prisma.tagsOnUser.findMany({
+        where: {
+            user: username
+        }
+    })
+    return response
+}
+
+
+export const getTagsOfPost = async(id: number) => {
+    const response = await prisma.tagsOnPost.findMany({
+        where: {
+            prop_id: id
+        }
+    })
+    return response
+}
+    

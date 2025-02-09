@@ -1,12 +1,13 @@
 import Groq from "groq-sdk";
-import { getProject, getMentors } from "./user.service";
+import { getProject, getMentors, getTagsOfUser, getTagsOfPost} from "./user.service";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export async function findMentorMatch(projectId: number): Promise<string> {
     try {
-        const project = await getProject(projectId);
+        const project = '20';//await getProject(projectId);
         const mentors = await getMentors();
+        console.log(projectId);
 
         // Handle the case where project or mentors are not found
         if (!project || !mentors.length) {
@@ -15,9 +16,9 @@ export async function findMentorMatch(projectId: number): Promise<string> {
 
         // prompt
         const matchPrompt = `
-            Given the project details below, match the best mentor from the list and and return only that Mentors name as a string:
-            Project: Name: ${project.title}, Tech Stack: ${project.tags.join(', ')}, Duration: ${project.duration}.
-            Mentors: ${mentors.map(m => `Name: ${m.username}, Tech Stack: ${m.tags.join(', ')}`).join(', ')}.
+            Given the project details below, match the best or closest mentor from the list and and return only that Mentors name as a string ALWAYS as just a name string:
+            Project: Name: ${project.title}, Tech Stack: ${getTagsOfPost(projectId)}.
+            Mentors: ${mentors.map(m => `Name: ${m.username}, Tech Stack: ${getTagsOfUser(m.username)}`).join(', ')}.
             Who is the best mentor for this project?
         `;
 
@@ -31,6 +32,7 @@ export async function findMentorMatch(projectId: number): Promise<string> {
         });
 
         // Extract and return the assistant's response
+        console.log(response.choices[0].message.content);
         return response.choices[0].message.content;
     } catch (error) {
         console.error('Error matching mentor:', error);
