@@ -50,18 +50,18 @@ export const createProject = async(id: number, title: string, description: strin
             duration: duration,
             createdById: user,
         },
-    })
+    });
 
-    for (var tag in tags) {
+    for (const tag in tags) {
         await prisma.tagsOnPost.create({
             data: {
                 prop_id: response.id,
                 tag: tag
             }
-        })
+        });
     }
 
-    return response
+    return response;
 }
 
 export const getMentors = async() => {

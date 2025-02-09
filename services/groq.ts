@@ -1,18 +1,23 @@
 import Groq from "groq-sdk";
+import { getProject, getMentors } from "./user.service";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export async function findMentorMatch(projectId: number): Promise<string> {
     try {
-        // call service folder --> prisma - find project details
-        //const project = await placeholder.findProject(projectId);
-        // const mentors = await prisma.mentor.findMany()
+        const project = await getProject(projectId);
+        const mentors = await getMentors();
+
+        // Handle the case where project or mentors are not found
+        if (!project || !mentors.length) {
+            throw new Error('Project or mentors not found');
+        }
 
         // prompt
         const matchPrompt = `
             Given the project details below, match the best mentor from the list and return in a json format:
-            Project: Name: ${project.name}, Tech Stack: ${project.techStack}, Specialty: ${project.specialty}.
-            Mentors: ${mentors.map(m => `Name: ${m.name}, Tech Stack: ${m.techStack}, Specialty: ${m.specialty}`).join(', ')}.
+            Project: Name: ${project.title}, Tech Stack: ${project.tags.join(', ')}, Duration: ${project.duration}.
+            Mentors: ${mentors.map(m => `Name: ${m.username}, Tech Stack: ${m.tags.join(', ')}`).join(', ')}.
             Who is the best mentor for this project?
         `;
 
@@ -21,7 +26,7 @@ export async function findMentorMatch(projectId: number): Promise<string> {
             model: "llama-3.3-70b-versatile", // Specify the model
             messages: [
                 { role: 'system', content: 'You are a helpful assistant.' },
-                { role: 'user', content: groqPrompt },
+                { role: 'user', content: matchPrompt },
             ],
         });
 
