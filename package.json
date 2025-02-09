@@ -12,7 +12,8 @@
     "next": "15.1.6",
     "openai": "^4.83.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-wavify": "^1.11.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
