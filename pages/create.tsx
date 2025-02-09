@@ -9,6 +9,32 @@ export default function Create() {
   const [accepted, setAccepted] = useState(false);
   const [denied, setDenied] = useState(false);
   const [showContact, setShowContact] = useState(false);
+<<<<<<< Updated upstream
+=======
+  const [showForm, setShowForm] = useState(false);
+  const [projectName, setProjectName] = useState('');
+  const [projectDescription, setProjectDescription] = useState('');
+  const [projectTechStack, setProjectTechStack] = useState('');
+  const [submittedProjects, setSubmittedProjects] = useState([]);
+  const [id, setId] = useState(0);
+
+  const handleSubmit = async() => {
+    const techStackArray = projectTechStack.split(' ').filter(tag => tag.startsWith('#'));
+    setSubmittedProjects([...submittedProjects, { name: projectName, description: projectDescription }]);
+    setShowForm(false);
+    setProjectName('');
+    setProjectDescription('');
+    setProjectTechStack('');
+    setId(getRandomInt(10000000));
+    await createProject(id, projectName, projectDescription, '1', '1', techStackArray);
+  };
+
+  const handleMentorMatch = () => {
+    await findMentorMatch(id);
+  }
+
+  const getRandomInt = (max: number) => {return Math.floor(Math.random() * max)};
+>>>>>>> Stashed changes
 
   return (
     <>
@@ -27,6 +53,7 @@ export default function Create() {
         </ul>
       </nav>
 
+<<<<<<< Updated upstream
       {/* Black background wrapper */}
       <div className="bg-black min-h-screen w-full flex flex-col items-center pt-16">
   
@@ -37,6 +64,17 @@ export default function Create() {
             <Bell className="w-5 h-5" />
             <span className="text-lg font-semibold">Notifications</span>
           </div>
+=======
+      <div className="absolute inset-0 bg-black flex flex-col items-start p-8">
+        {/* Create Project Button */}
+        <div 
+          className="bg-gray-700 w-[200px] h-[200px] flex items-center justify-center rounded-lg cursor-pointer shadow-lg mb-4"
+          onClick={() => setShowForm(true)}
+        > 
+          <div className="absolute top-4 text-lg text-white font-semibold">Create Project</div>
+          <Plus className="text-white w-[100px] h-[100px]" />
+        </div>
+>>>>>>> Stashed changes
 
           {/* Rachel's notification */}
           {!denied ? (
@@ -82,12 +120,16 @@ export default function Create() {
                 </a>
               </div>
             </div>
+<<<<<<< Updated upstream
           ) : (
             <p className="text-white text-center">No notifications</p>
           )}
 
           {/* Mentor notifaction not hard code*/}
            {/* this will only appear when a future button called get mentor is pressed, but it will basically get feilds Mentor name, mentor github, mentor contact. Similar to Rachel notiaction hard code format*/}
+=======
+          ))}
+>>>>>>> Stashed changes
         </div>
       </div>
 
@@ -100,6 +142,7 @@ export default function Create() {
         </div>
       </div>
 
+<<<<<<< Updated upstream
       {/* Background */}
       <div className="bg-black w-screen h-screen text-black"></div>
 
@@ -114,6 +157,11 @@ export default function Create() {
       </Wave>
 
       <div className="absolute bottom-0 left-0 w-full">
+=======
+      {/* Background and Waves */}
+      <div className="bg-black w-screen h-screen text-black"></div>
+      <div className="fixed bottom-0 left-0 w-full">
+>>>>>>> Stashed changes
         <Wave
           fill="rgba(0, 13, 255, 0.8)"
           paused={false}
