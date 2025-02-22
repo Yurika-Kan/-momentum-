@@ -5,12 +5,12 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 export async function findMentorMatch(projectId: number): Promise<string> {
     try {
-        const project = '20';//await getProject(projectId);
+        const project = await getProject(projectId);
         const mentors = await getMentors();
         console.log(projectId);
 
         // Handle the case where project or mentors are not found
-        if (!project || !mentors.length) {
+        if (!project) {
             throw new Error('Project or mentors not found');
         }
 

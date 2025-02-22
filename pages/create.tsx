@@ -191,7 +191,7 @@ export default function Create() {
       {/* Buttons Section */}
       <div className="bg-black w-screen min-h-screen text-white mt-150 flex flex-col items-center">
         <div className="mt-8 flex flex-wrap justify-center space-x-4 mt-50">
-          <button className="bg-blue-900 text-white mt-100 px-6 py-2 rounded-lg shadow-lg">Resources</button>
+          <button className="bg-blue-900 text-white mt-100 px-6 py-2 rounded-lg shadow-lg">Scrum</button>
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">Get Mentor</button>
           <button className="bg-blue-900 text-white px-6 py-2 rounded-lg shadow-lg">View Contact</button>
         </div>

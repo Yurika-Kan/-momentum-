@@ -24,12 +24,12 @@ export default function Home() {
         <ul className="flex space-x-8 text-lg font-semibold">
           <li><Link href="/" className="text-white">Home</Link></li>
           <li><Link href="/create" className="text-white">MyHub</Link></li>
-          <li><Link href="/resources" className="text-white">Resources</Link></li>
+          <li><Link href="/scrum" className="text-white">Scrum</Link></li>
         </ul>
       </nav>
 
       {/* Hero Section */}
-      <div className="relative w-screen h-screen flex flex-col items-center justify-center text-center text-black bg-black overflow-hidden">
+      <div className="relative w-screen h-screen flex flex-col items-center justify-center text-center text-black bg-gradient-to-t from-black to-blue-960 overflow-hidden">
         <h1 className="text-8xl font-extrabold text-blue-500">Momentum</h1>
         <p className="text-2xl font-bold text-gray-300 mt-4 max-w-2xl">Build teams, get mentorship, and keep moving.</p>
 
@@ -53,8 +53,18 @@ export default function Home() {
       </div>
 
       {/* Next Section */}
-      <div id="next-section" className="h-screen bg-gradient-to-r from-black to-blue-800 flex flex-col items-center justify-center pt-24">
-      <h1 className="text-6xl font-extrabold text-white">Projects</h1>
+      <div id="next-section" className="h-screen bg-gradient-to-b from-black to-blue-800 flex flex-col items-center justify-center pt-20">
+        {/* Bottom Wave Effect */}
+        <div className="top-0 left-0 w-full z-10">
+          <Wave
+            fill="rgba(0, 13, 255, 0.8)"
+            paused={false}
+            style={{ display: "flex", transform: "scaleY(-1)" }}
+            options={{ height: 20, amplitude: 50, speed: 0.2, points: 3 }}
+          />
+        </div>
+
+        <h1 className="text-6xl font-extrabold text-white">Projects</h1>
         <HoverCards
           items={[
             { title: "Matcha Time", description: "Drinking matcha with friends!", image: "/imtrynasleep.jpg", author: "Anjola B", role: "Project Lead" },

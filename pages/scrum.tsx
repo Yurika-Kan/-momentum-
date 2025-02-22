@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // For arrow clickers
 import { useState } from "react"; // Import useState
 
-export default function Resources() {
+export default function Scrum() {
   // State to keep track of the current box index
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -36,7 +36,7 @@ export default function Resources() {
         <ul className="flex space-x-8 text-lg font-semibold">
           <li><Link href="/" className="text-white">Home</Link></li>
           <li><Link href="/create" className="text-white">MyHub</Link></li>
-          <li><Link href="/resources" className="text-white">Resources</Link></li>
+          <li><Link href="/scrum" className="text-white">Scrum</Link></li>
 
         </ul>
       </nav>
@@ -49,7 +49,7 @@ export default function Resources() {
           <h1 className="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-blue-500">
             Sail to Scrum
           </h1>
-          <p className="text-xl mt-2 text-gray-700">
+          <p className="text-xl mt-2 text-white">
             What is scrum?
             It is an industry standard framework that helps <br />
             software teams structure and manage their work!
@@ -59,15 +59,15 @@ export default function Resources() {
         {/* Section below "Sail to Scrum" */}
         <div className="mt-24 px-8 flex justify-between mx-auto">
           <div className="text-center w-1/2">
-            <p className="text-3xl font-extrabold text-gray-900">Let's define sprint</p>
-            <p className="text-lg mt-2 text-gray-700">
+            <p className="text-3xl font-extrabold text-white">Let's define sprint</p>
+            <p className="text-lg mt-2 text-white">
               Sprints are short planned periods where a <br />
               team works to complete a set amount of work!
             </p>
           </div>
           <div className="text-center w-1/2">
-            <p className="text-3xl font-extrabold text-gray-900">Why Scrum?</p>
-            <p className="text-lg mt-2 text-gray-700">
+            <p className="text-3xl font-extrabold text-white">Why Scrum?</p>
+            <p className="text-lg mt-2 text-white">
               Most tech companies use scrum. <br />
               Knowing scrum can help you stand out professionally!
             </p>
