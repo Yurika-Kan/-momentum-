@@ -29,7 +29,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative w-screen h-screen flex flex-col items-center justify-center text-center text-black bg-gradient-to-t from-black to-blue-960 overflow-hidden">
+      <div className="relative w-screen h-screen flex flex-col items-center justify-center text-center text-black bg-gradient-to-t from-black to-blue-950 overflow-hidden">
         <h1 className="text-8xl font-extrabold text-blue-500">Momentum</h1>
         <p className="text-2xl font-bold text-gray-300 mt-4 max-w-2xl">Build teams, get mentorship, and keep moving.</p>
 

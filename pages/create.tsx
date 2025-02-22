@@ -89,13 +89,13 @@ export default function Create() {
         </ul>
       </nav>
 
-      <div className="absolute inset-0 bg-black flex flex-col items-start p-8 mt-20">
+      <div className="absolute inset-0 bg-black flex flex-col items-start p-8 bottom-40 mt-20">
         {/* Create Project Button */}
         <div
-          className="bg-gray-700 w-[200px] h-[200px] flex items-center justify-center rounded-lg cursor-pointer shadow-lg mb-4"
+          className="bg-gray-700 w-[200px] h-[200px] flex items-center justify-center rounded-lg cursor-pointer shadow-lg mb-12"
           onClick={() => setShowForm(true)}
         >
-          <div className="absolute top-4 text-lg text-white font-semibold">Create Project</div>
+          <div className="absolute top-4 bottom-10 text-lg text-white font-semibold">Create Project</div>
           <Plus className="text-white w-[100px] h-[100px]" />
         </div>
 
