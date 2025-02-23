@@ -1,11 +1,13 @@
-**The Spark ⟢
-**
+##Keep Building, Keep Moving! 
+Momentum connects developers with the right teammates and experienced mentors, ensuring projects don’t just start, but keep moving forward and thrive.
+
+##The Spark ⟢
 We’ve all been there—starting a personal project with excitement, only to lose motivation along the way. Our team realized that what we needed wasn’t just discipline, but a support system. That’s why we built Momentum—a platform that matches developers with teammates and mentors, giving them the push they need to bring their software projects to life!
 
-What Momentum Does ༄
+##What Momentum Does ༄
 Momentum connects coders who are driven to make waves by providing the tools and support they need to succeed: ~ Project Creation & Team Building – Users can create projects and receive team member requests, or explore existing projects and apply to join. ~ AI-Powered Mentor Matching – Our algorithm analyzes a project’s tech stack and needs, then automatically assigns the most qualified mentor from our database to guide the team. ~ Scrum Resources for Success – In addition to teammates and mentors, users have access to a resources page that walks them through the Scrum framework, helping them stay organized and on track throughout their projects. Momentum is more than just a platform—it’s a community where coders can collaborate, grow, and achieve their goals together.
 
-How We Built It ⚙
+##How We Built It ⚙
 Frontend: Next.js, React, TailwindCSS Backend: TypeScript, Next.js API routes, Prisma, PostgreSQL AI Integration: ChatGPT API for mentor matching Version Control: GitHub for collaboration
 
 
