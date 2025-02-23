@@ -7,7 +7,9 @@ We've all started personal projects with excitement, only to lose motivation. Mo
 ## What Momentum Does ༄
 Momentum empowers coders with the tools and support to succeed:
 🚀 Project & Team Building – Create projects, find teammates, or join existing teams.
+
 🤖 AI-Powered Mentor Matching – Get matched with the best mentor based on your project's tech stack and needs.
+
 📋 Scrum Resources – Stay organized with guided Scrum framework support.
 
 More than a platform, Momentum is a community where coders collaborate, grow, and achieve their goals together.
