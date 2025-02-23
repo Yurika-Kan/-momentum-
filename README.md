@@ -1,4 +1,5 @@
-The Spark ⟢
+**The Spark ⟢
+**
 We’ve all been there—starting a personal project with excitement, only to lose motivation along the way. Our team realized that what we needed wasn’t just discipline, but a support system. That’s why we built Momentum—a platform that matches developers with teammates and mentors, giving them the push they need to bring their software projects to life!
 
 What Momentum Does ༄
