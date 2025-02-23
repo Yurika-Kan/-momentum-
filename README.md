@@ -17,7 +17,9 @@ More than a platform, Momentum is a community where coders collaborate, grow, an
 
 ## How We Built It ⚙
 Frontend: Next.js, React, TailwindCSS 
+
 Backend: TypeScript, Next.js API routes, Prisma, PostgreSQL 
+
 AI Integration: ChatGPT API for mentor matching 
 
 ## How to run
