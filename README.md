@@ -22,5 +22,11 @@ Backend: TypeScript, Next.js API routes, Prisma, PostgreSQL
 
 AI Integration: ChatGPT API for mentor matching 
 
-## How to run
+## How To Tun
 Navigate to file and run: npm run dev
+
+## Devpost 
+https://devpost.com/software/momentum-5928li
+
+## Contributors
+Yurika Kan, Jen Cui, Anjola Babalola, London Jones 
