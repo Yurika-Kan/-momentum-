@@ -1,6 +1,8 @@
 ## Keep Building, Keep Moving! 
 Momentum connects developers with the right teammates and experienced mentors, ensuring projects don’t just start, but keep moving forward and thrive.
 
+[![Demo](https://www.youtube.com/watch?v=4cyKNYYfmjQ)](https://www.youtube.com/watch?v=4cyKNYYfmjQ)
+
 ## The Spark ⟢
 We've all started personal projects with excitement, only to lose motivation. Momentum connects developers with teammates and mentors, providing the support needed to bring ideas to life!
 
@@ -22,7 +24,7 @@ Backend: TypeScript, Next.js API routes, Prisma, PostgreSQL
 
 AI Integration: ChatGPT API for mentor matching 
 
-## How To Tun
+## How To Run
 Navigate to file and run: npm run dev
 
 ## Devpost 
