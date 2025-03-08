@@ -1,8 +1,7 @@
 ## Keep Building, Keep Moving! 
 Momentum connects developers with the right teammates and experienced mentors, ensuring projects don’t just start, but keep moving forward and thrive.
 
-[![Demo](https://www.youtube.com/watch?v=4cyKNYYfmjQ/0.jpg)](https://www.youtube.com/watch?v=4cyKNYYfmjQ)
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/4cyKNYYfmjQ/0.jpg)](https://www.youtube.com/watch?v=4cyKNYYfmjQ)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/4cyKNYYfmjQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=4cyKNYYfmjQ)
 
 
 ## The Spark ⟢
